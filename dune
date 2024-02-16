@@ -1,0 +1,14 @@
+(subdir
+ doc
+ (dynamic_include ../gendune/dune.inc))
+
+(subdir
+ gendune
+ (rule
+  (target dune.inc)
+  (deps
+   (source_tree ../doc))
+  (action
+   (with-stdout-to
+    %{target}
+    (run ./gen_dune.exe ../doc)))))
